@@ -25,7 +25,7 @@ static Catalog *instance =nil;
 {
     self = [super init];
     if (self) {
-        data = @[[Product product:@"i1" price:@"100" image:@"i1.jpg"],[Product product:@"i2" price:@"200" image:@"i2.jpeg"],[Product product:@"i3" price:@"300" image:@"i3.jpeg"]];
+        data = @[[Product productWithName:@"i1" price:@"100" image:@"i1.jpg"],[Product productWithName:@"i2" price:@"200" image:@"i2.jpeg"],[Product productWithName:@"i3" price:@"300" image:@"i3.jpeg"]];
     }
     return self;
 }

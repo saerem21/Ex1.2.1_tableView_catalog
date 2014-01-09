@@ -10,6 +10,8 @@
 #import "Product.h"
 #import "ProductCell.h"
 #import "Catalog.h"
+#import "Cart.h"
+
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate,CartDelegate>
 {
@@ -17,12 +19,26 @@
     NSMutableArray *cart;
 }
 @property (weak,nonatomic)IBOutlet UITableView *table;
+@property (strong,nonatomic)Cart *cart;
 
 @end
 
 
 
 @implementation ViewController
+
+-(void)incQuantity:(Product *)product{
+    [self.cart incQuantity:product];
+    
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:1];
+    [self.table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+-(void)decQuantity:(Product *)product{
+    [self.cart decQuantity:product];
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:1];
+    [self.table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+}
 
 -(void)addItem:(id)sender{
     //UITableViewCell *cell = (UITableViewCell *)sender;

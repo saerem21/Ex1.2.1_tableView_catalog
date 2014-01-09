@@ -9,13 +9,18 @@
 #import "Product.h"
 
 @implementation Product
-+(id)product:(NSString *)name price:(NSString *)price image:(NSString *)image{
++(id)productWithName:(NSString *)name price:(NSString *)price image:(NSString *)image{
     Product *item = [[Product alloc] init];
     item.name = name;
     item.price = price;
     item.imageName = image;
     
     return item;
+}
+
+-(BOOL)isEqualToProduct:(Product *)product
+{
+    return [self.code isEqualToString:product.code];
 }
 
 @end
