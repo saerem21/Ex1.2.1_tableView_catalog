@@ -7,15 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CartItem.h"
 #import "Product.h"
 
 @interface Cart : NSObject
 
+@property NSMutableArray *items;
 
 -(void)addProduct:(Product *)item;
 
--(void)incQuantity:(Product *)product;
--(void)decQuantity:(Product *)product;
-
+-(void)incQuantity1:(NSString *)productCode;
+-(void)decQuantity1:(NSString *)productCode;
+-(CartItem *)cartItemWith:(NSString *)productCode;
 
 @end
+

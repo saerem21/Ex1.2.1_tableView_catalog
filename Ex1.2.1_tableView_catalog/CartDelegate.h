@@ -5,14 +5,13 @@
 //  Created by SDT-1 on 2014. 1. 8..
 //  Copyright (c) 2014년 SDT-1. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
-#import "Product.h"
 
 @protocol CartDelegate <NSObject>
-
 -(void)addItem:(id)sender;
--(void)incQuantity:(Product *)product;
--(void)decQuantity:(Product *)product;
+
+-(void)incQuantity:(NSString *)productCode;
+-(void)decQuantity:(NSString *)productCode;
 
 @end
+

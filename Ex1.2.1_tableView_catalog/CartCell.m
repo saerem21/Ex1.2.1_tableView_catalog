@@ -7,24 +7,51 @@
 //
 
 #import "CartCell.h"
-#import "CartItem.h"
+
+@interface CartCell()
+
+@property (copy, nonatomic) NSString *productCode;
+
+@property (weak, nonatomic) IBOutlet UILabel *quantity;
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@end
 
 @implementation CartCell
 
-
-- (IBAction)minusClicked:(id)sender {
-    [self.delegate incQuantity:self.product];
+-(IBAction)plusClicked:(id)sender{
+    [self.delegate incQuantity:self.productCode];
+   
+    NSLog(@"%@",self.productCode);
 }
 
-- (IBAction)pulsClicked:(id)sender {
-    [self.delegate decQuantity:self.product];
+-(IBAction)minusClicked:(id)sender{
+    [self.delegate decQuantity:self.productCode];
 }
 
-- (void)setCartItem:(CartItem *)item{
-    self.product = item.product;
+-(void)setCartItem:(CartItem *)item{
+    self.productCode = item.product.code;
     
-    self.name.text = item.product.name;
+    self.nameLabel.text = item.product.name;
     self.quantity.text = [NSString stringWithFormat:@"%d 개",item.quantity];
+    
+}
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+    
+    // Configure the view for the selected state
 }
 
 @end

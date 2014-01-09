@@ -6,12 +6,14 @@
 //  Copyright (c) 2014년 SDT-1. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 #import "Product.h"
 
 @interface CartItem : NSObject
 
-@property (weak,nonatomic)Product *product;
-@property (nonatomic)NSInteger quantity;
+@property (weak, nonatomic)Product *product;
+@property (nonatomic) int quantity;
+
 
 @end

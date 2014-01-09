@@ -5,7 +5,6 @@
 //  Created by SDT-1 on 2014. 1. 9..
 //  Copyright (c) 2014년 SDT-1. All rights reserved.
 //
-
 #import "Catalog.h"
 #import "Product.h"
 
@@ -14,34 +13,31 @@
     NSArray *data;
 }
 
-static Catalog *instance =nil;
-
-- (id)productAt:(NSInteger)index
-{
-    return [data objectAtIndex:index];
+static Catalog *_instance = nil;
++(id)defaultCatalog{
+    if(nil == _instance)
+        _instance = [[Catalog alloc]init];
+    return _instance;
 }
 
--(id)init
-{
+-(id)init{
     self = [super init];
-    if (self) {
-        data = @[[Product productWithName:@"i1" price:@"100" image:@"i1.jpg"],[Product productWithName:@"i2" price:@"200" image:@"i2.jpeg"],[Product productWithName:@"i3" price:@"300" image:@"i3.jpeg"]];
+    if(self){
+        data = @[[Product product:@"ball1" code:@"1" price:@"300" image:@"i1.jpg"],
+                 [Product product:@"ball2" code:@"2" price:@"400" image:@"i2.jpeg"],
+                 [Product product:@"ball3" code:@"3" price:@"500" image:@"i3.jpeg"]];
+        
     }
     return self;
 }
 
-- (int)numberOfProducts
-{
-    return [data count];
+-(id)productAt:(int)index{
+    return [data objectAtIndex:index];
+    
 }
 
-
-+(id)sharedCatalog
-{
-    if(instance){
-        instance = [[Catalog alloc] init];
-    }
-    return instance;
+-(int)numberOfProduct{
+    return [data count];
 }
 
 @end

@@ -10,10 +10,9 @@
 
 @interface Catalog : NSObject
 
-- (id)productAt:(NSInteger)index;
-- (NSInteger)numberOfProducts;
+-(id)productAt:(int)index;
+-(int)numberOfProduct;
 
-
-+(id)sharedCatalog;
++(id)defaultCatalog;
 
 @end

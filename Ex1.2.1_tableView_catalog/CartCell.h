@@ -7,15 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "CartDelegate.h"
-#import "Product.h"
+#import "CartItem.h"
 
 @interface CartCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet UILabel *quantity;
-
-@property (weak,nonatomic)id<CartDelegate> delegate;
-@property (copy,nonatomic)Product *product;
-
+@property (weak, nonatomic)id<CartDelegate> delegate;
+-(void)setCartItem:(CartItem *)item;
 @end
+

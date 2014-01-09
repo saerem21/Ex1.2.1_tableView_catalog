@@ -79,7 +79,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="pulsClicked:" destination="HPk-V2-rL4" eventType="touchUpInside" id="kSb-Rq-bsB"/>
+                                                        <action selector="plusClicked:" destination="HPk-V2-rL4" eventType="touchUpInside" id="EQw-b2-rsR"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snU-QZ-Mfb">
@@ -88,7 +88,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                     <state key="normal" title="-"/>
                                                     <connections>
-                                                        <action selector="minusClicked:" destination="HPk-V2-rL4" eventType="touchUpInside" id="P9V-eT-cCT"/>
+                                                        <action selector="minusClicked:" destination="HPk-V2-rL4" eventType="touchUpInside" id="hug-Gd-g5K"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlp-2U-i1Q">
@@ -107,8 +107,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="name" destination="hlp-2U-i1Q" id="59D-Lh-yy5"/>
-                                            <outlet property="quantity" destination="cXS-hd-IeC" id="l38-gy-jHe"/>
+                                            <outlet property="nameLabel" destination="hlp-2U-i1Q" id="jwH-Zf-KL8"/>
+                                            <outlet property="quantity" destination="cXS-hd-IeC" id="Wz5-KI-pfg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

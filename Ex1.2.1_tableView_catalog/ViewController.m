@@ -7,47 +7,53 @@
 //
 
 #import "ViewController.h"
-#import "Product.h"
 #import "ProductCell.h"
+#import "Product.h"
 #import "Catalog.h"
+#import "CartCell.h"
+#import "CartItem.h"
+#import "CartDelegate.h"
 #import "Cart.h"
 
+@interface ViewController ()<UITableViewDelegate, UITableViewDataSource, CartDelegate>
+@property NSMutableArray *items;
+@property (weak, nonatomic) IBOutlet UITableView *table;
+@property (strong, nonatomic) Cart *cart;
 
-@interface ViewController ()<UITableViewDataSource,UITableViewDelegate,CartDelegate>
-{
-    Catalog *catalog;
-    NSMutableArray *cart;
-}
-@property (weak,nonatomic)IBOutlet UITableView *table;
-@property (strong,nonatomic)Cart *cart;
 
 @end
 
-
-
 @implementation ViewController
 
--(void)incQuantity:(Product *)product{
-    [self.cart incQuantity:product];
+-(void)incQuantity:(NSString *)productCode{
+    NSLog(@"ffff");
+    [self.cart incQuantity1:productCode];
+    NSLog(@"ffff");
     
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:1];
     [self.table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
--(void)decQuantity:(Product *)product{
-    [self.cart decQuantity:product];
+
+
+-(void)decQuantity:(NSString *)productCode{
+    [self.cart decQuantity1:productCode];
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:1];
     [self.table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
--(void)addItem:(id)sender{
-    //UITableViewCell *cell = (UITableViewCell *)sender;
-    NSIndexPath *indexPath = [_table indexPathForCell:sender];
-    Product *item = [catalog productAt:indexPath.row];
-    [cart addObject:item];
+-(void)addItem:(id)sender
+{
+    NSIndexPath *indexPath = [self.table indexPathForCell:sender];
+    Product *product = [[Catalog defaultCatalog]productAt:indexPath.row];
+    
+    // 핵심
+    [self.cart addProduct:product];
     
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:1];
-    [_table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.table reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -55,52 +61,44 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if( 0 == section){
-        return [catalog numberOfProducts];
-    }
-    else{
-        return [cart count];
-    }
+    if(0==section)
+        return [[Catalog defaultCatalog]numberOfProduct];
+    else
+        return self.cart.items.count;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return (0 == section)? @"상품목록" :@"카트";
+    return (0 == section) ? @"상품목록" : @"카트";
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(0 == indexPath.section){
+    if(0==indexPath.section){
         ProductCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PRODUCT_CELL"];
-        Product *item = [catalog productAt:indexPath.row];
-        [cell setProductInfo:item];
         cell.delegate = self;
+        Product *product = [[Catalog defaultCatalog]productAt:indexPath.row];
+        [cell setProductInfo:product];
+        
         
         return cell;
     }
     else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CART_CELL"];
+        CartCell *cell = (CartCell *)[tableView dequeueReusableCellWithIdentifier:@"CART_CELL"];
+        cell.delegate = self;
+        CartItem *cartItem = self.cart.items[indexPath.row];
+        [cell setCartItem:cartItem];
         
-        Product *item = cart[indexPath.row];
-        cell.textLabel.text = item.name;
         return cell;
     }
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-//    if (0 == section) {
-//        return @"Product";
-//    }
-//    else{
-//        return @"Items in Cart";
-//    }
-//}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    catalog = [[Catalog alloc] init];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    cart = [[NSMutableArray alloc] init];
+    self.cart = [[Cart alloc] init];
+    self.cart.items = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
