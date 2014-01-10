@@ -14,6 +14,7 @@
 #import "CartItem.h"
 #import "CartDelegate.h"
 #import "Cart.h"
+#import "PDViewController.h"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource, CartDelegate>
 @property NSMutableArray *items;
@@ -24,6 +25,17 @@
 @end
 
 @implementation ViewController
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    PDViewController *detailVC = segue.destinationViewController;
+    
+    NSIndexPath *indexPath = [self.table indexPathForCell:sender];
+    Product *selectedProduct = [[Catalog defaultCatalog] productAt:indexPath.row];
+    
+    detailVC.productCode = selectedProduct.code;
+}
+
 
 -(void)incQuantity:(NSString *)productCode{
     NSLog(@"ffff");

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014년 SDT-1. All rights reserved.
 //
 #import "Catalog.h"
-#import "Product.h"
+
 
 @implementation Catalog
 {
@@ -29,6 +29,15 @@ static Catalog *_instance = nil;
         
     }
     return self;
+}
+
+-(Product *)productWithCode:(NSString *)productCode{
+    for (Product *one in data) {
+        if([one isEqualProduct:productCode]){
+            return one;
+        }
+    }
+    return Nil;
 }
 
 -(id)productAt:(int)index{

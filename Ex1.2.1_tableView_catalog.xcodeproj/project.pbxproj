@@ -30,6 +30,7 @@
 		00BE6739187E71BC001537B8 /* Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BE6738187E71BC001537B8 /* Cart.m */; };
 		00BE673C187E7794001537B8 /* CartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BE673B187E7794001537B8 /* CartItem.m */; };
 		00BE673F187E7C08001537B8 /* CartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BE673E187E7C08001537B8 /* CartCell.m */; };
+		00BE6899187FE157001537B8 /* PDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BE6898187FE157001537B8 /* PDViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		00BE673B187E7794001537B8 /* CartItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartItem.m; sourceTree = "<group>"; };
 		00BE673D187E7C08001537B8 /* CartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartCell.h; sourceTree = "<group>"; };
 		00BE673E187E7C08001537B8 /* CartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartCell.m; sourceTree = "<group>"; };
+		00BE6897187FE157001537B8 /* PDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDViewController.h; sourceTree = "<group>"; };
+		00BE6898187FE157001537B8 /* PDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 				00BE673B187E7794001537B8 /* CartItem.m */,
 				00BE673D187E7C08001537B8 /* CartCell.h */,
 				00BE673E187E7C08001537B8 /* CartCell.m */,
+				00BE6897187FE157001537B8 /* PDViewController.h */,
+				00BE6898187FE157001537B8 /* PDViewController.m */,
 			);
 			path = Ex1.2.1_tableView_catalog;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				00BE6739187E71BC001537B8 /* Cart.m in Sources */,
 				00BE6707187E5BE6001537B8 /* ViewController.m in Sources */,
 				00BE6733187E5C48001537B8 /* Product.m in Sources */,
+				00BE6899187FE157001537B8 /* PDViewController.m in Sources */,
 				00BE672E187E5C04001537B8 /* ProductCell.m in Sources */,
 				00BE6701187E5BE6001537B8 /* AppDelegate.m in Sources */,
 				00BE66FD187E5BE6001537B8 /* main.m in Sources */,
@@ -502,6 +508,7 @@
 				00BE6721187E5BE6001537B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		00BE6722187E5BE6001537B8 /* Build configuration list for PBXNativeTarget "Ex1.2.1_tableView_catalogTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +517,7 @@
 				00BE6724187E5BE6001537B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
